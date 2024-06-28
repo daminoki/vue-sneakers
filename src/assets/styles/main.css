@@ -1,0 +1,32 @@
+@import "variables.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+html, body, #app {
+    width: 100%;
+}
+
+body {
+    @media screen and (max-width: 1240px) {
+        padding: 32px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 16px;
+    }
+
+    background-color: var(--bg-color);
+    padding: 48px;
+}
+

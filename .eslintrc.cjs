@@ -38,8 +38,18 @@ module.exports = {
       'error',
       {
         singleline: 3,
-        multiline: 1,
+        multiline: 1
       },
     ],
+    'max-len': [
+      'error',
+      {
+        code: 120,
+        ignoreComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ]
   }
 }
