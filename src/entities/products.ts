@@ -4,8 +4,3 @@ export interface IProduct {
   price: number;
   title: string;
 }
-
-export interface IProductResponse {
-  data: IProduct[] | null;
-  error: string | null;
-}
