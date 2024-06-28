@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import useBasketStore from '@/stores/basket.ts';
+
+const basketStore = useBasketStore();
 </script>
 
 <template>
@@ -6,7 +9,7 @@
     <div class="flex justify-between items-center">
       <RouterLink to="/" class="flex gap-4">
         <div class="w-10 h-10 overflow-hidden">
-          <img class="w-full h-full object-contain" src="/public/logo.png" alt="Logo">
+          <img class="w-full h-full object-contain" src="/logo.png" alt="Logo">
         </div>
         <div class="max-pad:hidden">
           <p class="font-bold text-xl">
@@ -19,9 +22,9 @@
       </RouterLink>
 
       <div class="flex gap-8 max-pad:gap-6">
-        <button class="flex gap-3 items-center">
+        <button class="flex gap-3 items-center" @click="basketStore.toggleBasket()">
           <img
-            src="/public/cart.svg"
+            src="/cart.svg"
             alt="Cart"
             width="18"
             height="18"
@@ -31,7 +34,7 @@
 
         <RouterLink to="/" class="flex gap-3 items-center">
           <img
-            src="/public/heart.svg"
+            src="/heart.svg"
             alt="Favorites"
             width="18"
             height="18"
@@ -41,7 +44,7 @@
 
         <RouterLink to="/" class="flex gap-3 items-center">
           <img
-            src="/public/profile.svg"
+            src="/profile.svg"
             alt="Profile"
             width="18"
             height="18"

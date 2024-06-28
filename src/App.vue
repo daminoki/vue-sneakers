@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
+import TheBasket from '@/components/TheBasket.vue';
+import useBasketStore from '@/stores/basket.ts';
+
+const basketStore = useBasketStore();
 </script>
 
 <template>
@@ -8,6 +12,7 @@ import TheFooter from '@/components/TheFooter.vue';
     <TheHeader />
     <main class="flex-1">
       <router-view />
+      <TheBasket v-if="basketStore.isOpened" />
     </main>
     <TheFooter />
   </div>

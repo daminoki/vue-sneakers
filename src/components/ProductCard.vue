@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { IProduct } from '@/entities/globals.ts';
+import { IProduct } from '@/entities/products.ts';
 
-const props = defineProps<{
+defineProps<{
   product: IProduct;
 }>();
 </script>
@@ -13,15 +13,15 @@ const props = defineProps<{
   >
     <div class="w-133 h-112 mx-auto">
       <img
-        :src="`/public${props.product.imageUrl}`"
+        :src="product.imageUrl"
         width="133"
         height="112"
-        class="object-cover w-full h-full"
+        class="object-contain w-full h-full"
       >
     </div>
 
     <h3 class="text-sm mt-3.5">
-      {{ props.product.title }}
+      {{ product.title }}
     </h3>
 
     <div class="flex justify-between w-full mt-auto pt-3.5">
@@ -30,17 +30,17 @@ const props = defineProps<{
           Цена:
         </p>
         <p class="text-sm font-bold">
-          {{ props.product.price }} руб.
+          {{ product.price }} руб.
         </p>
       </div>
 
       <button>
-        <img src="/public/plus.svg" alt="Добавить в корзину">
+        <img src="/plus.svg" alt="Добавить в корзину">
       </button>
     </div>
 
     <button class="absolute top-5 left-7">
-      <img src="/public/like-1.svg" alt="Добавить в избранное">
+      <img src="/like-1.svg" alt="Добавить в избранное">
     </button>
   </div>
 </template>

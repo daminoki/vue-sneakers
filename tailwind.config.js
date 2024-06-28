@@ -6,15 +6,22 @@ export default {
       colors: {
         'bg-color': '#E7F6FF',
         'bg-color-secondary': '#FFFFFF',
+        'overlay-color': '#0000007F',
         'text-light': '#9D9D9D',
         'text-light-secondary': '#5C5C5C',
         'border-color': '#F3F3F3',
       },
       width: {
+        70: '4.375rem',
         133: '8.3125rem',
+        385: '24.0625rem',
       },
       height: {
+        70: '4.375rem',
         112: '7rem',
+      },
+      minWidth: {
+        70: '4.375rem',
       },
       screens: {
         tablet: '1240px',
