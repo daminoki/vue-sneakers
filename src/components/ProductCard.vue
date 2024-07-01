@@ -17,7 +17,7 @@ const basketStore = useBasketStore();
         width="133"
         height="112"
         class="object-contain w-full h-full"
-        alt="Кроссовки"
+        :alt="product.title"
       >
     </div>
 
@@ -35,12 +35,12 @@ const basketStore = useBasketStore();
         </p>
       </div>
 
-      <button @click="basketStore.toggleBasketItem(product)">
+      <button aria-label="Добавить в корзину" @click="basketStore.toggleBasketItem(product)">
         <img :src="basketStore.getIsItemInBasket(product) ? '/checked.svg' : '/plus.svg'" alt="Добавить в корзину">
       </button>
     </div>
 
-    <button class="absolute top-5 left-7">
+    <button class="absolute top-5 left-7" aria-label="Добавить в избранное">
       <img src="/like-1.svg" alt="Добавить в избранное">
     </button>
   </div>

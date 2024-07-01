@@ -2,11 +2,9 @@
 import { IProduct } from '@/entities/products.ts';
 import useBasketStore from '@/stores/basket.ts';
 
-const props = defineProps<{
+defineProps<{
   product: IProduct;
 }>();
-
-const { product } = props;
 
 const basketStore = useBasketStore();
 </script>
@@ -16,7 +14,7 @@ const basketStore = useBasketStore();
     <div class="min-w-70 w-70 h-70">
       <img
         :src="product.imageUrl"
-        alt="Кроссовки"
+        :alt="product.title"
         width="70"
         height="70"
         class="object-contain w-full h-full"
@@ -32,10 +30,10 @@ const basketStore = useBasketStore();
       </p>
     </div>
 
-    <button class="w-8 h-8 min-w-8" @click="basketStore.toggleBasketItem(product)">
+    <button class="w-8 h-8 min-w-8" aria-label="Удалить из корзины" @click="basketStore.toggleBasketItem(product)">
       <img
         src="/close.svg"
-        alt="Удалить"
+        alt="Удалить из корзины"
       >
     </button>
   </div>

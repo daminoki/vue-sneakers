@@ -5,7 +5,6 @@ import { addToBasket, getProducts } from '@/api/index.ts';
 interface IBasketStore {
   isOpened: boolean;
   items: IProduct[];
-  totalPrice: number;
 }
 
 const getBasketProducts = async (): Promise<IProduct[]> => {
@@ -17,33 +16,33 @@ const getBasketProducts = async (): Promise<IProduct[]> => {
 };
 
 const useBasketStore = defineStore('basket', {
-  state: (): IBasketStore => ({ isOpened: false, items: [], totalPrice: 0 }),
+  state: (): IBasketStore => ({ isOpened: false, items: [] }),
   getters: {
     getIsItemInBasket: (state) => (item: IProduct) => state.items.find((basketItem) => basketItem.id === item.id),
+    getTotalPrice: (state) => state.items.reduce((total, item) => total + item.price, 0),
+    getBasketItems: (state) => state.items,
   },
   actions: {
     async initializeBasket() {
       this.items = await getBasketProducts();
-      this.getCartTotalPrice();
     },
     toggleBasket() {
       this.isOpened = !this.isOpened;
     },
-    toggleBasketItem(item: IProduct) {
-      addToBasket({ ...item, isAddedToBasket: !item.isAddedToBasket });
+    async toggleBasketItem(item: IProduct) {
+      const { error } = await addToBasket({ ...item, isAddedToBasket: !item.isAddedToBasket });
+
+      if (error) return console.error(error);
 
       const isItemInBasket = this.items.some((basketItem) => basketItem.id === item.id);
 
       if (isItemInBasket) {
         this.items = this.items.filter((basketItem) => basketItem.id !== item.id);
-        this.totalPrice -= item.price;
       } else {
         this.items = [...this.items, item];
-        this.totalPrice += item.price;
       }
-    },
-    getCartTotalPrice() {
-      this.totalPrice = this.items.reduce((acc, item) => acc + item.price, 0);
+
+      return this.items;
     },
   },
 });

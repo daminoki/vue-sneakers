@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue';
+import { onMounted } from 'vue';
 import BasketCard from '@/components/BasketCard.vue';
 import useBasketStore from '@/stores/basket.ts';
 
@@ -8,8 +8,6 @@ const basketStore = useBasketStore();
 onMounted(() => {
   basketStore.initializeBasket();
 });
-
-const basketItems = computed(() => basketStore.items);
 </script>
 
 <template>
@@ -27,7 +25,7 @@ const basketItems = computed(() => basketStore.items);
 
       <div class="pt-10">
         <ul class="flex flex-col gap-3">
-          <li v-for="item in basketItems" :key="item.id">
+          <li v-for="item in basketStore.getBasketItems" :key="item.id">
             <BasketCard :product="item" />
           </li>
         </ul>

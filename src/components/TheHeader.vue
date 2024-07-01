@@ -6,10 +6,6 @@ const basketStore = useBasketStore();
 
 onMounted(() => {
   basketStore.initializeBasket();
-
-  return {
-    basketStore,
-  };
 });
 </script>
 
@@ -39,7 +35,7 @@ onMounted(() => {
             height="18"
           >
           <span class="text-sm font-bold text-text-light-secondary max-pad:hidden">
-            {{ basketStore.totalPrice }} руб.
+            {{ basketStore.getTotalPrice }} руб.
           </span>
         </button>
 
