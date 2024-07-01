@@ -3,4 +3,5 @@ export interface IProduct {
   imageUrl: string;
   price: number;
   title: string;
+  isAddedToBasket: boolean;
 }

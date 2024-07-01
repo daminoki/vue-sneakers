@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import useBasketStore from '@/stores/basket.ts';
 
 const basketStore = useBasketStore();
+
+onMounted(() => {
+  basketStore.initializeBasket();
+
+  return {
+    basketStore,
+  };
+});
 </script>
 
 <template>
@@ -29,7 +38,9 @@ const basketStore = useBasketStore();
             width="18"
             height="18"
           >
-          <span class="text-sm font-bold text-text-light-secondary max-pad:hidden">1205 руб.</span>
+          <span class="text-sm font-bold text-text-light-secondary max-pad:hidden">
+            {{ basketStore.totalPrice }} руб.
+          </span>
         </button>
 
         <RouterLink to="/" class="flex gap-3 items-center">

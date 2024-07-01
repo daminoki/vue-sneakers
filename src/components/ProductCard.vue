@@ -10,16 +10,14 @@ const basketStore = useBasketStore();
 </script>
 
 <template>
-  <div
-    class="pt-5 px-7 pb-7 rounded-2xl border-2 border-solid border-border-color
-     flex flex-col relative h-full"
-  >
+  <div class="pt-5 px-7 pb-7 rounded-2xl border-2 border-solid border-border-color flex flex-col relative h-full">
     <div class="w-133 h-112 mx-auto">
       <img
         :src="product.imageUrl"
         width="133"
         height="112"
         class="object-contain w-full h-full"
+        alt="Кроссовки"
       >
     </div>
 
@@ -38,7 +36,7 @@ const basketStore = useBasketStore();
       </div>
 
       <button @click="basketStore.toggleBasketItem(product)">
-        <img src="/plus.svg" alt="Добавить в корзину">
+        <img :src="basketStore.getIsItemInBasket(product) ? '/checked.svg' : '/plus.svg'" alt="Добавить в корзину">
       </button>
     </div>
 
