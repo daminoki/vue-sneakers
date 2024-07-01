@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { IProduct } from '@/entities/products.ts';
+import useBasketStore from '@/stores/basket.ts';
 
 defineProps<{
   product: IProduct;
 }>();
+
+const basketStore = useBasketStore();
 </script>
 
 <template>
@@ -34,7 +37,7 @@ defineProps<{
         </p>
       </div>
 
-      <button>
+      <button @click="basketStore.toggleBasketItem(product)">
         <img src="/plus.svg" alt="Добавить в корзину">
       </button>
     </div>

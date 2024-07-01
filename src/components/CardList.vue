@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProductCard from '@/components/ProductCard.vue';
-import getProducts from '@/api/index.ts';
+import { getProducts } from '@/api/index.ts';
 import { ref, onMounted } from 'vue';
 import { IProduct } from '@/entities/products.ts';
 

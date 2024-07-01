@@ -1,19 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-type TMethod = 'get' | 'post' | 'put' | 'delete';
+type TMethod = 'get' | 'post' | 'patch' | 'delete';
 
 const baseURL = import.meta.env.VITE_API_URL;
 
-const apiHelper = async (method: TMethod, url: string, ...args: AxiosRequestConfig[]) => {
+const apiHelper = async (method: TMethod, url: string, ...args: (AxiosRequestConfig | unknown)[]) => {
   try {
-    const response = await axios({
-      method,
-      url: `${baseURL}/${url}`,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      ...args,
-    });
+    const response = await axios[method](`${baseURL}/${url}`, ...args as AxiosRequestConfig[]);
 
     return {
       data: response.data,
