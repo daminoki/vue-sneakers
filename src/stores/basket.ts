@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia';
 import { IProduct } from '@/entities/products.ts';
 import { addToBasket, getProducts } from '@/api/index.ts';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { enableBodyScroll, disableBodyScroll } from '@funboxteam/diamonds';
 
 interface IBasketStore {
   isOpened: boolean;
@@ -28,6 +30,12 @@ const useBasketStore = defineStore('basket', {
     },
     toggleBasket() {
       this.isOpened = !this.isOpened;
+
+      if (this.isOpened) {
+        disableBodyScroll();
+      } else {
+        enableBodyScroll();
+      }
     },
     async toggleBasketItem(item: IProduct) {
       const { error } = await addToBasket({ ...item, isAddedToBasket: !item.isAddedToBasket });

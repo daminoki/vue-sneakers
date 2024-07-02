@@ -10,6 +10,9 @@ export default {
         'text-light': '#9D9D9D',
         'text-light-secondary': '#5C5C5C',
         'border-color': '#F3F3F3',
+        'button-color': '#9DD458',
+        'button-hover-color': '#7EBD3F',
+        'bg-gradient': 'linear-gradient(180deg, #9DD458 0%, #7EBD3F 100%)',
       },
       width: {
         70: '4.375rem',
