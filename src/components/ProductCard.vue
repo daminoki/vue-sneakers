@@ -1,12 +1,21 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { IProduct } from '@/entities/products.ts';
 import useBasketStore from '@/stores/basket.ts';
 
-defineProps<{
+const props = defineProps<{
   product: IProduct;
 }>();
 
 const basketStore = useBasketStore();
+
+const loadingToBasket = ref(false);
+
+const handleBasketButtonClick = async () => {
+  loadingToBasket.value = true;
+  await basketStore.toggleBasketItem(props.product);
+  loadingToBasket.value = false;
+};
 </script>
 
 <template>
@@ -35,7 +44,12 @@ const basketStore = useBasketStore();
         </p>
       </div>
 
-      <button aria-label="Добавить в корзину" @click="basketStore.toggleBasketItem(product)">
+      <button
+        aria-label="Добавить в корзину"
+        class="disabled:pointer-events-none disabled:opacity-50"
+        :disabled="loadingToBasket"
+        @click="handleBasketButtonClick"
+      >
         <img :src="basketStore.getIsItemInBasket(product) ? '/checked.svg' : '/plus.svg'" alt="Добавить в корзину">
       </button>
     </div>
