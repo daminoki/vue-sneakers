@@ -39,7 +39,7 @@ onMounted(() => {
           </span>
         </button>
 
-        <RouterLink to="/" class="flex gap-3 items-center">
+        <RouterLink to="/favorites" class="flex gap-3 items-center">
           <img
             src="/heart.svg"
             alt="Favorites"

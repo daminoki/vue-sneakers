@@ -4,4 +4,5 @@ export interface IProduct {
   price: number;
   title: string;
   isAddedToBasket: boolean;
+  isAddedToFavorites: boolean;
 }
