@@ -7,18 +7,19 @@ import useFavoritesStore from '@/stores/favorites.ts';
 
 const products = ref<IProduct[]>([]);
 
-onMounted(async () => {
+const fetchProducts = async () => {
   const { data } = await getProducts();
 
   if (data) {
     products.value = data;
   }
-});
+};
 
 const favoritesStore = useFavoritesStore();
 
 onMounted(() => {
   favoritesStore.initializeFavorites();
+  fetchProducts();
 });
 </script>
 
