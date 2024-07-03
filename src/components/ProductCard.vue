@@ -2,19 +2,28 @@
 import { ref } from 'vue';
 import { IProduct } from '@/entities/products.ts';
 import useBasketStore from '@/stores/basket.ts';
+import useFavoritesStore from '@/stores/favorites.ts';
 
 const props = defineProps<{
   product: IProduct;
 }>();
 
 const basketStore = useBasketStore();
+const favoritesStore = useFavoritesStore();
 
 const loadingToBasket = ref(false);
+const loadingToFavorites = ref(false);
 
 const handleBasketButtonClick = async () => {
   loadingToBasket.value = true;
   await basketStore.toggleBasketItem(props.product);
   loadingToBasket.value = false;
+};
+
+const handleFavoritesButtonClick = async () => {
+  loadingToFavorites.value = true;
+  await favoritesStore.toggleFavoriteItem(props.product);
+  loadingToFavorites.value = false;
 };
 </script>
 
@@ -54,8 +63,16 @@ const handleBasketButtonClick = async () => {
       </button>
     </div>
 
-    <button class="absolute top-5 left-7" aria-label="Добавить в избранное">
-      <img src="/like-1.svg" alt="Добавить в избранное">
+    <button
+      class="absolute top-5 left-7"
+      aria-label="Добавить в избранное"
+      :disabled="loadingToFavorites"
+      @click="handleFavoritesButtonClick"
+    >
+      <img
+        :src="favoritesStore.getIsItemInFavorites(product) ? '/like-2.svg' : '/like-1.svg'"
+        alt="Добавить в избранное"
+      >
     </button>
   </div>
 </template>
