@@ -4,7 +4,7 @@ import { IProduct } from '@/entities/products.ts';
 
 defineProps<({
   products: IProduct[],
-  isProductsLoading: boolean,
+  isProductsLoading?: boolean,
 })>();
 </script>
 

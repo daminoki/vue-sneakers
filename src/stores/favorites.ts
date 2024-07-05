@@ -7,7 +7,7 @@ interface IFavoritesStore {
 }
 
 const getFavoritesProducts = async () => {
-  const { data } = await getProducts();
+  const { data } = await getProducts('');
 
   if (!data) return [];
 

@@ -50,6 +50,15 @@ module.exports = {
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
       },
+    ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+        packageDir: './',
+      },
     ]
   }
 }

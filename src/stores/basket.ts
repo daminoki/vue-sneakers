@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import { IProduct } from '@/entities/products.ts';
 import { addToBasket, getProducts } from '@/api/index.ts';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { enableBodyScroll, disableBodyScroll } from '@funboxteam/diamonds';
 
 interface IBasketStore {
@@ -10,7 +9,7 @@ interface IBasketStore {
 }
 
 const getBasketProducts = async (): Promise<IProduct[]> => {
-  const { data } = await getProducts();
+  const { data } = await getProducts('');
 
   if (!data) return [];
 
