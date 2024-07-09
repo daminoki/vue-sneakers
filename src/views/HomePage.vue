@@ -6,11 +6,8 @@ import {
 } from 'vue';
 import { IProduct } from '@/entities/products.ts';
 import useFavoritesStore from '@/stores/favorites.ts';
-import debounce from 'lodash.debounce';
-
-interface ISearchParams {
-  title?: string;
-}
+import { useDebounceFn } from '@vueuse/core';
+import { ISearchParams } from '@/entities/fetchParams.ts';
 
 const products = ref<IProduct[]>([]);
 const isProductsLoading = ref(false);
@@ -18,7 +15,7 @@ const filters = reactive({
   searchQuery: '',
 });
 
-const onSearchQueryChange = debounce((event) => {
+const onSearchQueryChange = useDebounceFn((event) => {
   const target = event.target as HTMLInputElement;
   filters.searchQuery = target.value;
 }, 300);

@@ -9,7 +9,7 @@ interface IBasketStore {
 }
 
 const getBasketProducts = async (): Promise<IProduct[]> => {
-  const { data } = await getProducts('');
+  const { data } = await getProducts();
 
   if (!data) return [];
 
