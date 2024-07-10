@@ -2,7 +2,7 @@
 import CardList from '@/components/CardList.vue';
 import { getProducts } from '@/api/index.ts';
 import {
-  ref, onMounted, defineModel,
+  ref, onMounted,
 } from 'vue';
 import { IProduct } from '@/entities/products.ts';
 import useFavoritesStore from '@/stores/favorites.ts';
@@ -10,8 +10,7 @@ import { useDebounceFn } from '@vueuse/core';
 
 const products = ref<IProduct[]>([]);
 const isProductsLoading = ref(false);
-
-const searchQuery = defineModel<string>();
+const searchQuery = ref('');
 
 const fetchProducts = async () => {
   isProductsLoading.value = true;
