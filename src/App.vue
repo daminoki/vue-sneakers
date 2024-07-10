@@ -5,9 +5,9 @@ import TheBasket from '@/components/TheBasket.vue';
 </script>
 
 <template>
-  <div class="w-full h-full flex flex-col bg-bg-color-secondary rounded-3xl max-w-7xl mx-auto">
+  <div class="w-full flex-1 flex flex-col bg-bg-color-secondary rounded-3xl max-w-7xl mx-auto">
     <TheHeader />
-    <main class="flex-1">
+    <main class="flex-1 p-5 flex flex-col">
       <router-view />
       <TheBasket />
     </main>

@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@funboxteam/diamonds": "^8.9.0",
     "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",
