@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="!favoritesStore.favorites.length" class="p-48">
+  <div v-if="!favoritesStore.favorites.length" class="py-48 my-auto max-pad:py-24">
     <img
       src="/emoji-1.png"
       width="70"

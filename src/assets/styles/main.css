@@ -17,6 +17,12 @@ html, body, #app {
     width: 100%;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 body {
     @media screen and (max-width: 1240px) {
         padding: 32px;
@@ -28,6 +34,8 @@ body {
 
     background-color: var(--bg-color);
     padding: 48px;
+    min-height: 100vh;
+    display: flex;
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
@@ -41,3 +49,6 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 
+.no-search-cancel::-webkit-search-cancel-button {
+    display: none;
+}
