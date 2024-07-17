@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CardList from '@/components/CardList.vue';
-import TheSelect from '@/components/ui/TheSelect.vue';
+import SortSelect from '@/components/HomePage/SortSelect.vue';
 import { getProducts } from '@/api/index.ts';
 import {
   ref, onMounted,
@@ -55,7 +55,7 @@ const handleSortChange = (newSortType: string) => {
     </div>
   </div>
 
-  <TheSelect @sort-change="handleSortChange" />
+  <SortSelect @sort-change="handleSortChange" />
 
   <CardList :products="products" :is-products-loading="isProductsLoading" />
 </template>

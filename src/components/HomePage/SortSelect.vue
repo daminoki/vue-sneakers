@@ -81,6 +81,3 @@ const handleSelectionChange = (event: Event) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
