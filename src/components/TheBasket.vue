@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import BasketCard from '@/components/BasketCard.vue';
 import useBasketStore from '@/stores/basket.ts';
-import TheButton from '@/components/ui/TheButton.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { onClickOutside } from '@vueuse/core';
 
@@ -68,7 +68,7 @@ onClickOutside(modalRef, () => {
           <p class="flex justify-between mb-3.5">
             <b>Итого:</b> <span>{{ basketStore.getTotalPrice }} руб.</span>
           </p>
-          <TheButton text="Оформить заказ" :disabled="!basketStore.getBasketItems.length" />
+          <BaseButton text="Оформить заказ" :disabled="!basketStore.getBasketItems.length" />
         </div>
       </div>
     </div>

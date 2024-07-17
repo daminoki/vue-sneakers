@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CardList from '@/components/CardList.vue';
+import SortSelect from '@/components/HomePage/SortSelect.vue';
 import { getProducts } from '@/api/index.ts';
 import {
   ref, onMounted,
@@ -11,10 +12,11 @@ import { useDebounceFn } from '@vueuse/core';
 const products = ref<IProduct[]>([]);
 const isProductsLoading = ref(false);
 const searchQuery = ref('');
+const sortType = ref('price');
 
 const fetchProducts = async () => {
   isProductsLoading.value = true;
-  const { data } = await getProducts(searchQuery.value);
+  const { data } = await getProducts(searchQuery.value, sortType.value);
   isProductsLoading.value = false;
 
   if (data) {
@@ -30,10 +32,15 @@ onMounted(() => {
   favoritesStore.initializeFavorites();
   fetchProducts();
 });
+
+const handleSortChange = (newSortType: string) => {
+  sortType.value = newSortType;
+  fetchProducts();
+};
 </script>
 
 <template>
-  <div class="flex justify-end pb-8">
+  <div class="flex justify-end pb-4">
     <div class="relative max-pad:w-full">
       <img src="/search.svg" alt="search" class="absolute top-1/2 left-3 w-4 h-4 -translate-y-1/2">
       <input
@@ -47,6 +54,9 @@ onMounted(() => {
       >
     </div>
   </div>
+
+  <SortSelect @sort-change="handleSortChange" />
+
   <CardList :products="products" :is-products-loading="isProductsLoading" />
 </template>
 
